@@ -82,6 +82,7 @@
         @media(max-width: 768px) {
             .nav-container { flex-direction: column; gap: 15px; text-align: center; }
             .hero h1 { font-size: 2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
             h2 { font-size: 1.7rem; }
         }
     </style>
@@ -118,7 +119,7 @@
             </div>
 
             <h2>Una Mención en Constante Evolución</h2>
-            <p>La transformación digital avanza rápido y nuestro entorno educativo cambia con ella. Esta mención ofrece a los estudiantes de segundo medio una plataforma de exploración tecnológica que vincula la ingeniería de procesos, la conectividad y la gestión del territorio. No se trata de memorizar rutinas automáticas, sino de entender cómo interactúa el hardware, el software y los datos en los ecosistemas productivos modernos.</p>
+            <p>La transformación digital avanza rápido y nuestro entorno educativo cambia con ella. Esta mención ofrece a los estudiantes de segundo medio una plataforma de exploration tecnológica que vincula la ingeniería de procesos, la conectividad y la gestión del territorio. No se trata de memorizar rutinas automáticas, sino de entender cómo interactúa el hardware, el software y los datos en los ecosistemas productivos modernos.</p>
             
             <div class="grid-2">
                 <div class="card">
@@ -132,12 +133,12 @@
             </div>
         </div>
 
-        <!-- PESTAÑA 2: AUTOMATIZACIÓN E INGENIERÍA (ACTUALIZADA) -->
+        <!-- PESTAÑA 2: AUTOMATIZACIÓN E INGENIERÍA -->
         <div id="automatizacion" class="tab-content">
             <h2>Especialización Física y Automatización</h2>
             <p>Esta dimensión aborda los componentes esenciales que permiten controlar y dar movimiento a los procesos industriales modernos, equilibrando la lógica eléctrica tradicional con los nuevos controladores digitales.</p>
 
-            <!-- NUEVO PROYECTO DESTACADO: PLANTA MECATRÓNICA PAYELEC -->
+            <!-- PROYECTO DESTACADO: PLANTA MECATRÓNICA PAYELEC -->
             <div class="card" style="margin-bottom: 50px; background-color: rgba(2, 132, 199, 0.05); border: 1px solid var(--primary);">
                 <div style="background-color: var(--primary); display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px; color: #fff;">
                     🚀 PROYECTO DESTACADO CO-DESARROLLADO
@@ -222,7 +223,6 @@
                     <p>Para la administración de sistemas e infraestructura, el taller incorpora servidores de torre dedicados operando sobre plataformas <strong>Ubuntu Server</strong> de forma nativa. Esto permite simular el despliegue de soluciones e-commerce y aplicaciones locales que interactúan con la planta.</p>
                 </div>
                 <div class="img-box">
-                    <!-- FOTO DEL ESTUDIANTE TRABAJANDO CON LA COMPUTADORA DE ALTA FIDELIDAD -->
                     <img src="IMG_20260506_115310.jpg" alt="Estudiante analizando sistemas e infraestructura informática">
                 </div>
             </div>
@@ -254,7 +254,6 @@
                     <p style="font-style: italic; font-size: 0.95rem;">*Nota institucional: El trabajo técnico directo con aeronaves pilotadas a distancia (drones) orientadas al área industrial se encuentra actualmente en fase de conversaciones para su reactivación.</p>
                 </div>
                 <div class="img-box">
-                    <!-- FOTO DE DOS COMPAÑEROS COLABORANDO FRENTE A LAS PANTALLAS EN DISEÑO DE CIRCUITOS O PIEZAS -->
                     <img src="IMG_20260506_120137.jpg" alt="Estudiantes colaborando en desarrollo y diseño digital">
                 </div>
             </div>
@@ -267,7 +266,6 @@
 
             <div class="grid-2">
                 <div class="img-box">
-                    <!-- FOTO EN PRIMER PLANO DE LA ALUMNA AJUSTANDO EL ROBOT MOVIL ARDUINO -->
                     <img src="IMG_20260506_120934.jpg" alt="Estudiante trabajando en prototipo robótico de precisión">
                 </div>
                 <div>
@@ -284,13 +282,12 @@
                     <p>Cada prototipo, circuito o línea de empaque simulada requiere miradas multidisciplinarias. Un estudiante puede destacar en la precisión del diseño en 3D, otro en la estructuración de la red y otro en la lógica del PLC; el éxito del proyecto radica en la suma del equipo.</p>
                 </div>
                 <div class="img-box">
-                    <!-- FOTO EN PLANO MEDIO DE LA ALUMNA TRABAJANDO EN EL MISMO PROTOTIPO -->
                     <img src="equipo.jpeg" alt="Dinámica de taller y desarrollo técnico paritario">
                 </div>
             </div>
         </div>
 
-       <!-- PESTAÑA 6: CONTINUIDAD DE ESTUDIOS (ACTUALIZADA) -->
+        <!-- PESTAÑA 6: CONTINUIDAD DE ESTUDIOS -->
         <div id="continuidad" class="tab-content">
             <div class="bg-light">
                 <h2>Vías de Acceso Especial y Respaldo Oficial Mineduc</h2>
@@ -331,9 +328,9 @@
                 <!-- SECCIÓN ALIANZA INACAP -->
                 <div class="card" style="margin-top: 35px; background-color: #e2e8f0; border-color: #cbd5e1; color: #1e293b;">
                     <h3 style="color: #0f172a;">💼 Estado de Alianzas: Convenio INACAP</h3>
-                    <p style="color: #334155;">Actualmente la institución se encuentra trabajando activamente en el diseño pedagógico y desarrollo de un convenio de convalidación bidireccional exclusivo con <strong>INACAP</strong>. Este plan busca conectar de manera directa el egreso de enseñanza media con carreras de Ingeniería en Automatización y Robótica o Ingeniería Informática, potenciando los aprendizajes previos desarrollados en el laboratorio.</p>
+                    <p style="color: #334155;">Actualmente la institution se encuentra trabajando activamente en el diseño pedagógico y desarrollo de un convenio de convalidación bidireccional exclusivo con <strong>INACAP</strong>. Este plan busca conectar de manera directa el egreso de enseñanza media con carreras de Ingeniería en Automatización y Robótica o Ingeniería Informática, potenciando los aprendizajes previos desarrollados en el laboratorio.</p>
                 </div>
-            </div>
+            </div> <!-- <--- AQUÍ ESTABA EL ERROR: ESTA ETIQUETA HABÍA SIDO ELIMINADA -->
         </div>
 
         <!-- PESTAÑA 7: TOUR GUIADO -->
@@ -352,38 +349,35 @@
                     <h3 style="margin-bottom: 20px; text-align: center;">Formulario de Solicitud de Visita</h3>
                     <form action="https://formsubmit.co/jorgegaldamez@liceosannicolas.cl" method="POST">
     
-    <!-- IMPORTANTE: campo oculto para evitar redirecciones molestas fuera de tu web -->
-    <input type="hidden" name="_next" value="https://https://jorgegaldamez-oss.github.io/4.0/">
-    <input type="hidden" name="_captcha" value="false">
+                        <!-- IMPORTANTE: campos ocultos para redirección limpia y sin captcha -->
+                        <input type="hidden" name="_next" value="https://jorgegaldamez-oss.github.io/4.0/">
+                        <input type="hidden" name="_captcha" value="false">
 
-    <div class="form-control">
-        <label for="nombre">Nombre Completo</label>
-        <!-- Agregamos name="nombre" -->
-        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Alejandra González">
-    </div>
-    
-    <div class="form-control">
-        <label for="curso">Tu Curso Actual (2do Medio)</label>
-        <!-- Agregamos name="curso" -->
-        <select id="curso" name="curso" required>
-            <option value="">Selecciona tu curso</option>
-            <option value="2A">2do Medio A</option>
-            <option value="2B">2do Medio B</option>
-            <option value="2C">2do Medio C</option>
-            <option value="2C">2do Medio D</option>
-            <option value="2C">2do Medio E</option>
-            <option value="2C">2do Medio F</option>
-        </select>
-    </div>
-    
-    <div class="form-control">
-        <label for="contacto">Teléfono o WhatsApp de Contacto</label>
-        <!-- Agregamos name="whatsapp" -->
-        <input type="tel" id="contacto" name="whatsapp" required placeholder="Ej: +56 9 8765 4321">
-    </div>
-    
-    <button type="submit" class="btn" style="width: 100%;">🚀 Solicitar Cupo para el Recorrido</button>
-</form>
+                        <div class="form-control">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Alejandra González">
+                        </div>
+                        
+                        <div class="form-control">
+                            <label for="curso">Tu Curso Actual (2do Medio)</label>
+                            <select id="curso" name="curso" required>
+                                <option value="">Selecciona tu curso</option>
+                                <option value="2A">2do Medio A</option>
+                                <option value="2B">2do Medio B</option>
+                                <option value="2C">2do Medio C</option>
+                                <option value="2D">2do Medio D</option> <!-- Corregido value de 2C a 2D -->
+                                <option value="2E">2do Medio E</option> <!-- Corregido value de 2C a 2E -->
+                                <option value="2F">2do Medio F</option> <!-- Corregido value de 2C a 2F -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-control">
+                            <label for="contacto">Teléfono o WhatsApp de Contacto</label>
+                            <input type="tel" id="contacto" name="whatsapp" required placeholder="Ej: +56 9 8765 4321">
+                        </div>
+                        
+                        <button type="submit" class="btn" style="width: 100%;">🚀 Solicitar Cupo para el Recorrido</button>
+                    </form>
                 </div>
             </div>
         </div>
