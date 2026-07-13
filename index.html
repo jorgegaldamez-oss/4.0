@@ -3,461 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mención Industria 4.0 - Elaboración Industrial de Alimentos</title>
+    <title>Mención Industria 4.0 - Especialidad de Alimentos</title>
     <style>
-        /* VARIABLES DE DISEÑO (Colores Tecnológicos y Modernos */
+        /* SUTILEZAS FUTURISTAS Y PALETA DE COLORES */
         :root {
-            --primary: #0072ff;
-            --secondary: #00c6ff;
+            --primary: #0284c7;
+            --secondary: #38bdf8;
             --dark-bg: #0f172a;
             --card-bg: #1e293b;
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
-            --light-bg: #f1f5f9;
-            --success: #10b981;
+            --light-bg: #f8fafc;
+            --gov-blue: #0f4c81;
+            --border: #334155;
         }
 
-        /* ESTILOS GENERALES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-box: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--dark-bg); color: var(--text-light); line-height: 1.6; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 40px 0; }
+        
+        /* MENÚ DE NAVEGACIÓN (TABS) */
+        header { background-color: #0b0f19; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; flex-wrap: wrap; }
+        .logo { font-weight: bold; font-size: 1.2rem; color: #fff; text-decoration: none; }
+        .logo span { color: var(--secondary); }
+        
+        nav { display: flex; gap: 5px; flex-wrap: wrap; }
+        .tab-btn { background: none; border: none; color: var(--text-muted); padding: 10px 15px; cursor: pointer; font-size: 0.95rem; font-weight: 500; border-radius: 6px; transition: all 0.3s; }
+        .tab-btn:hover { color: #fff; background-color: rgba(255,255,255,0.05); }
+        .tab-btn.active { color: #fff; background-color: var(--primary); }
 
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+        /* PROPAGACIÓN DE CONTENIDOS */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .container {
-            width: 85%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 0;
-        }
+        /* ELEMENTOS COMUNES REUTILIZABLES */
+        h1, h2, h3 { font-weight: 700; }
+        h2 { font-size: 2.2rem; margin-bottom: 25px; color: #fff; border-left: 5px solid var(--primary); padding-left: 15px; }
+        p { margin-bottom: 15px; color: var(--text-muted); font-size: 1.05rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 30px; }
+        
+        .img-box { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            background: linear-gradient(to right, #fff, var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+        .badge { background-color: rgba(56, 189, 248, 0.1); color: var(--secondary); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(56, 189, 248, 0.2); font-weight: 600; }
 
-        p {
-            line-height: 1.6;
-        }
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.2s; border: none; cursor: pointer; }
+        .btn:hover { background: #0274be; }
 
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 14px 28px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+        /* PESTAÑA 1: INICIO */
+        .hero { position: relative; padding: 100px 0; background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)), url('IMG_20260506_121435.jpg') center/cover no-repeat; border-radius: 16px; margin-bottom: 40px; }
+        .hero-inner { max-width: 700px; }
+        .hero h1 { font-size: 3rem; color: #fff; line-height: 1.2; margin-bottom: 20px; }
+        .hero h1 span { color: var(--secondary); }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
-        }
+        /* TARJETAS DE ALCANCES */
+        .card { background-color: var(--card-bg); padding: 25px; border-radius: 10px; border: 1px solid var(--border); }
+        .card h3 { color: #fff; margin-bottom: 12px; font-size: 1.3rem; }
 
-        /* 1. SECCIÓN HERO */
-        .hero {
-            position: relative;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            /* REEMPLAZAR CON TU IMAGEN PRINCIPAL: IMG_20260506_121435.jpg */
-            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('IMG_20260506_121435.jpg') center/cover no-repeat;
-            border-bottom: 3px solid var(--primary);
-        }
+        /* PESTAÑA INSTITUCIONAL (MINEDUC) */
+        .bg-light { background-color: var(--light-bg); color: #1e293b; border-radius: 16px; padding: 40px; }
+        .bg-light h2 { color: #0f172a; }
+        .bg-light p { color: #475569; }
+        .gov-card { background: white; padding: 25px; border-radius: 8px; border-top: 4px solid var(--gov-blue); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .gov-card h3 { color: #0f172a; margin-bottom: 10px; }
+        .gov-link { color: var(--primary); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+        .gov-link:hover { text-decoration: underline; }
 
-        .hero-content {
-            max-width: 700px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(to right, #0072ff, #00c6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        /* 2. PILARES 4.0 */
-        .pilares {
-            background-color: #111827;
-        }
-
-        .grid-pilares {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .pilar-card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #334155;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .pilar-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--secondary);
-        }
-
-        .pilar-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .pilar-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            color: #fff;
-        }
-
-        .pilar-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* 3. BLOQUE DE INFRAESTRUCTURA & FABLAB */
-        .fablab-section {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .fablab-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .fablab-image-container {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 114, 255, 0.2);
-        }
-
-        .fablab-image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-
-        .fablab-image-container img:hover {
-            transform: scale(1.05);
-        }
-
-        .tech-tag {
-            display: inline-block;
-            background: #1e293b;
-            color: var(--secondary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin: 5px;
-            border: 1px solid #334155;
-        }
-
-        /* 4. COMUNIDAD */
-        .comunidad {
-            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('IMG_20260506_120934.jpg') center/cover no-repeat;
-            text-align: center;
-        }
-
-        .comunidad-box {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .comunidad p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 40px;
-        }
-
-        /* 5. INSTITUCIONAL & MINEDUC */
-        .institucional {
-            background-color: var(--light-bg);
-            color: #1e293b;
-        }
-
-        .institucional h2 {
-            background: linear-gradient(to right, #1e293b, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .grid-gov {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .gov-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--primary);
-        }
-
-        .gov-card h3 {
-            margin-bottom: 15px;
-            color: #0f172a;
-        }
-
-        .gov-card p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .btn-gov {
-            display: inline-block;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .btn-gov:hover {
-            border-color: var(--primary);
-        }
-
-        /* 6. FORMULARIO / FOOTER */
-        .cta-section {
-            text-align: center;
-            background-color: #0b0f19;
-        }
-
-        .form-box {
-            max-width: 500px;
-            margin: 40px auto 0 auto;
-            background-color: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #334155;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--dark-bg);
-            border: 1px solid #334155;
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--secondary);
-        }
-
-        .btn-submit {
-            width: 100%;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
+        /* FORMULARIO */
+        .form-control { margin-bottom: 20px; }
+        .form-control label { display: block; margin-bottom: 6px; color: var(--text-muted); font-size: 0.9rem; }
+        .form-control input, .form-control select { width: 100%; padding: 12px; background-color: var(--dark-bg); border: 1px solid var(--border); border-radius: 6px; color: white; font-size: 1rem; }
+        .form-control input:focus, .form-control select:focus { outline: none; border-color: var(--primary); }
 
         /* RESPONSIVO */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.3rem; }
-            .container { width: 90%; padding: 40px 0; }
-            .fablab-section { flex-direction: column; }
+        @media(max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; text-align: center; }
+            .hero h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. SECCIÓN HERO (PANTALLA DE INICIO) -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Conecta el territorio.<br><span>Automatiza la industria.</span></h1>
-                <p>Transforma la producción del futuro con la mención en Industria 4.0 de la especialidad de Elaboración Industrial de Alimentos. Pasa del trabajo manual al control inteligente, la robótica y la ciberseguridad.</p>
-                <a href="#agendar" class="btn">🛠️ Reservar Tour en el Laboratorio</a>
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="switchTab('inicio')">Especialidad <span>Industria 4.0</span></a>
+            <nav>
+                <button class="tab-btn active" onclick="switchTab('inicio', this)">Inicio</button>
+                <button class="tab-btn" onclick="switchTab('automatizacion', this)">Automatización e Ingeniería</button>
+                <button class="tab-btn" onclick="switchTab('it', this)">Infraestructura IT e IA</button>
+                <button class="tab-btn" onclick="switchTab('fablab', this)">FabLab y Geointeligencia</button>
+                <button class="tab-btn" onclick="switchTab('comunidad', this)">Comunidad</button>
+                <button class="tab-btn" onclick="switchTab('continuidad', this)">Continuidad de Estudios</button>
+                <button class="tab-btn" onclick="switchTab('tour', this)">Tour Guiado</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- PESTAÑA 1: INICIO -->
+        <div id="inicio" class="tab-content active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+                        <h1>Conecta el territorio.<br><span>Automatiza la industria.</span></h1>
+                        <p>Una aproximación tecnológica de vanguardia dentro de la especialidad de Elaboración Industrial de Alimentos. Conoce un espacio de aprendizaje diseñado para explorar las competencias del mañana.</p>
+                        <button class="btn" onclick="switchTab('tour')">🗓️ Agendar una Visita al Laboratorio</button>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Una Mención en Constante Evolución</h2>
+            <p>La transformación digital avanza rápido y nuestro entorno educativo cambia con ella. Esta mención ofrece a los estudiantes de segundo medio una plataforma de exploración tecnológica que vincula la ingeniería de procesos, la conectividad y la gestión del territorio. No se trata de memorizar rutinas automáticas, sino de entender cómo interactúa el hardware, el software y los datos en los ecosistemas productivos modernos.</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <h3>🛠️ Aprender haciendo (Sujeto a Priorización)</h3>
+                    <p>Nuestra infraestructura está diseñada como un taller de ingeniería. Los contenidos y desafíos prácticos se adaptan anualmente según los focos priorizados del currículum escolar, dando flexibilidad y pertinencia real al aprendizaje.</p>
+                </div>
+                <div class="card">
+                    <h3>🌐 Un Flujo de Trabajo Integrado</h3>
+                    <p>Desde comprender cómo se diseña un plano o se analiza un mapa, hasta explorar la lógica detrás del control de un motor o el aseguramiento de un canal de datos. Todo el espacio está conectado.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- 2. PILARES DE LA MENCIÓN -->
-    <section class="pilares">
-        <div class="container">
-            <h2>Tus Futuros Superpoderes Técnicos</h2>
-            <div class="grid-pilares">
-                
-                <div class="pilar-card">
-                    <div class="pilar-icon">💨</div>
-                    <h3>Fuerza y Mecatrónica</h3>
-                    <p>Diseña y opera sistemas neumáticos industriales avanzados bajo el estándar de <strong>SMC</strong>. Domina la lógica cableada armando tableros de potencia reales.</p>
-                </div>
+        <!-- PESTAÑA 2: AUTOMATIZACIÓN E INGENIERÍA -->
+        <div id="automatizacion" class="tab-content">
+            <h2>Especialización Física y Automatización</h2>
+            <p>Esta dimensión aborda los componentes esenciales que permiten controlar y dar movimiento a los procesos industriales modernos, equilibrando la lógica eléctrica tradicional con los nuevos controladores digitales.</p>
 
-                <div class="pilar-card">
-                    <div class="pilar-icon">🤖</div>
-                    <h3>Cerebro Digital</h3>
-                    <p>Aprende la programación que controla las empresas globales: desde prototipos con Arduino/Raspberry Pi hasta PLCs de alta gama como <strong>Siemens S7-1200, LOGO! y Finder OPTA</strong>.</p>
-                </div>
-
-                <div class="pilar-card">
-                    <div class="pilar-icon">📊</div>
-                    <h3>Agentes de IA & Redes</h3>
-                    <p>Usa herramientas como Gemini y Antigravity IDE para estructurar dashboards inteligentes y optimizar sistemas. Todo corriendo de forma local en servidores con GPU <strong>NVIDIA RTX 5070</strong>.</p>
-                </div>
-
-                <div class="pilar-card">
-                    <div class="pilar-icon">🔒</div>
-                    <h3>Ciberseguridad IIoT</h3>
-                    <p>Gestiona una red interna real con Switches Gigabit y routers en subredes. Blinda los sistemas automatizados aplicando pautas de <strong>pentesting</strong> exclusivas para tu práctica profesional.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. SECCIÓN FABLAB Y DISEÑO -->
-    <section>
-        <div class="container fablab-section">
-            <div class="fablab-text">
-                <h2>Diseño e Innovación FabLab</h2>
-                <p style="color: var(--text-muted); margin-bottom: 20px;">
-                    En nuestro laboratorio no vienes a memorizar pizarras; vienes a modelar componentes mecánicos y conectar el territorio con las líneas de producción a través de tecnologías GIS profesionales.
-                </p>
+            <div class="grid-2">
                 <div>
-                    <span class="tech-tag">AutoCAD</span>
-                    <span class="tech-tag">Fusion 360</span>
-                    <span class="tech-tag">ArcGIS Professional Plus (ESRI)</span>
-                    <span class="tech-tag">Agisoft Metashape</span>
-                    <span class="tech-tag">Drone2Map</span>
-                    <span class="tech-tag">Impresión 3D Bambulab A1 AMS</span>
-                    <span class="tech-tag">Cortadora Láser Falcon 2 Pro</span>
+                    <h3>Sistemas de Electrocontrol y Potencia</h3>
+                    <p>El laboratorio dispone de estaciones equipadas para el estudio y montaje de lógicas de control eléctrico bajo normativas vigentes. Los estudiantes tienen la oportunidad de interactuar directamente con elementos de protección y maniobra industrial como contactores, disyuntores, relés térmicos, diferenciales y botoneras de control, utilizando multímetros para el diagnóstico seguro de circuitos.</p>
+                    
+                    <div class="badge-container">
+                        <span class="badge">Lógica Cableada</span>
+                        <span class="badge">Seguridad Eléctrica</span>
+                        <span class="badge">Terminal Blocks</span>
+                    </div>
+                </div>
+                <div class="img-box">
+                    <!-- FOTO DE LA ALUMNA REVISANDO LOS RACKS DE CONTROL ELÉCTRICO -->
+                    <img src="IMG_20260506_114152.jpg" alt="Estudiante analizando paneles de control eléctrico">
                 </div>
             </div>
-            <div class="fablab-image-container">
-                <!-- REEMPLAZAR CON TU IMAGEN: IMG_20260506_114223.jpg (Diseño en pantalla) -->
-                <img src="IMG_20260506_114223.jpg" alt="Diseño 3D e Ingeniería en Laboratorio">
+
+            <div class="grid-2" style="margin-top: 50px;">
+                <div class="img-box">
+                    <!-- FOTO DE LOS TRES COMPAÑEROS TRABAJANDO EN LA MALETA NEUMÁTICA SMC -->
+                    <img src="IMG_20260506_115310.jpg" alt="Trabajo en equipo sobre banco de neumática SMC">
+                </div>
+                <div>
+                    <h3>Mecatrónica y Fluidos Industriales (SMC)</h3>
+                    <p>Para comprender el control de movimiento y fuerza presente en las líneas de empaque o dosificación automáticas, el taller cuenta con entrenadores portátiles <strong>SMC PNEUMATE-200</strong>. Estas herramientas didácticas abren la posibilidad de diseñar y probar circuitos neumáticos reales basados en estándares de la industria global.</p>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 50px;">
+                <div>
+                    <h3>Controladores Programables (PLCs)</h3>
+                    <p>Dependiendo de los objetivos pedagógicos planificados para el periodo académico, los módulos de automatización permiten revisar desde fundamentos electrónicos con placas de desarrollo (Arduino / Raspberry Pi), hasta plataformas de control industrial como el ecosistema <strong>Siemens LOGO! y S7-1200</strong>, integrando además las nuevas alternativas de conectividad que ofrece el controlador **Finder OPTA**.</p>
+                </div>
+                <div class="img-box">
+                    <!-- FOTO DE LAS LÍNEAS DE PRODUCCIÓN MODULARES Y BANCO MECA TRÓNICO -->
+                    <img src="IMG_20260506_120511.jpg" alt="Maquetas mecatrónicas y módulos de control industrial">
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- 4. ENFOQUE COMUNITARIO -->
-    <section class="comunidad">
-        <div class="container">
-            <div class="comunidad-box">
-                <h2>Una Comunidad Tecnológica y Paritaria</h2>
-                <p>No programamos ni diseñamos de forma aislada. Somos un equipo donde la colaboración constante entre compañeros y el soporte técnico entre pares es la clave para resolver grandes desafíos de ingeniería aplicada.</p>
-                <!-- REEMPLAZAR CON TU IMAGEN: IMG_20260506_120934.jpg o IMG_20260506_120137.jpg -->
-                <a href="#agendar" class="btn" style="background: transparent; border: 2px solid white; box-shadow: none;">¡Ven a conocernos en equipo!</a>
+        <!-- PESTAÑA 3: INFRAESTRUCTURA IT E IA -->
+        <div id="it" class="tab-content">
+            <h2>Infraestructura IT, Redes y Computación Perimetral</h2>
+            <p>Un aspecto diferenciador de esta mención es la infraestructura tecnológica de red local que soporta el flujo de información, emulando la convergencia real entre las tecnologías de operación (OT) y de información (IT).</p>
+
+            <div class="grid-2">
+                <div>
+                    <h3>Arquitectura de Redes y Conectividad Propia</h3>
+                    <p>El laboratorio está dotado con una red de internet independiente estructurada mediante un switch Ethernet Gigabit y 3 routers separados. Esta configuración de hardware permite dictar clases orientadas a la segmentación de subredes, abriendo el espacio didáctico para que los estudiantes tengan la opción de experimentar cómo se aísla, gestiona y asegura el tráfico de datos críticos en una planta.</p>
+                    
+                    <h3>Servidores Locales Ubuntu</h3>
+                    <p>Para la administración de sistemas e infraestructura, el taller incorpora servidores de torre dedicados operando sobre plataformas <strong>Ubuntu Server</strong> de forma nativa. Esto permite simular el despliegue de soluciones e-commerce y aplicaciones locales que interactúan con la planta.</p>
+                </div>
+                <div class="img-box">
+                    <!-- FOTO DEL ESTUDIANTE TRABAJANDO CON LA COMPUTADORA DE ALTA FIDELIDAD -->
+                    <img src="IMG_20260506_114223.jpg" alt="Estudiante analizando sistemas e infraestructura informática">
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 40px;">
+                <div class="card">
+                    <h3>🤖 Entorno de Inteligencia Artificial Local</h3>
+                    <p>El laboratorio cuenta con una estación de cómputo de alto rendimiento equipada con procesador Intel i7, 32 GB de RAM y gráficos <strong>NVIDIA RTX 5070</strong>. Este hardware está preparado para explorar la integración de modelos de IA locales mediante <strong>Ollama</strong>, el diseño de dashboards con <strong>Antigravity IDE (Google)</strong> y la asistencia técnica de <strong>Gemini</strong> con fines de optimización de sistemas y visualización de datos en tiempo real.</p>
+                </div>
+                <div class="card">
+                    <h3>🛡️ Pautas de Ciberseguridad (Pentesting)</h3>
+                    <p>La seguridad informática es crítica en la Industria 4.0. El plan formativo incluye pautas programadas de auditoría y hackeo ético (pentesting) diseñadas específicamente para entornos IIoT (Internet de las Cosas Industrial), ayudando a los estudiantes a comprender los vectores de vulnerabilidad en redes conectadas.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- 5. RESPALDO DEL MINEDUC (TRANSPARENCIA INSTITUCIONAL) -->
-    <section class="institucional">
-        <div class="container">
-            <h2>Tu Cuarto Medio Vale por Ramos de Universidad</h2>
-            <p style="text-align: center; max-width: 800px; margin: -30px auto 40px auto; color: #475569;">
-                El Ministerio de Educación de Chile respalda tu trayectoria académica técnico-profesional. Conoce las normativas y portales de gobierno que aseguran ventajas reales para tu continuidad de estudios.
-            </p>
+        <!-- PESTAÑA 4: FABLAB Y GEOINTELIGENCIA -->
+        <div id="fablab" class="tab-content">
+            <h2>Laboratorio de Diseño, Prototipado y Geointeligencia</h2>
+            <p>Cuando un componente de planta requiere una mejora o se necesita rastrear la cadena de suministro en el territorio, el laboratorio ofrece herramientas digitales y de manufactura aditiva avanzadas para prototipar soluciones.</p>
+
+            <div class="grid-2">
+                <div>
+                    <h3>Ingeniería de Diseño y Fabricación Digital</h3>
+                    <p>Los alumnos acceden a softwares estándar como <strong>AutoCAD, Tinkercad y Fusion 360</strong> para el modelado en 2D y 3D. Dependiendo de las necesidades de los proyectos del año, estas ideas pueden materializarse físicamente en el taller utilizando la cortadora láser industrial <strong>Falcon 2 Pro (40W)</strong> o la impresión multicolor mediante la tecnología <strong>Bambulab A1 con sistema AMS</strong>.</p>
+                    
+                    <h3>Geointeligencia y Territorio (ESRI Chile)</h3>
+                    <p>A través de un convenio vigente con <strong>ESRI Chile</strong>, el laboratorio dispone de licencias profesionales avanzados de <strong>ArcGIS (Professional Plus y Creator)</strong> y herramientas como <strong>Drone2Map</strong> y <strong>Agisoft Metashape</strong>. Esto permite el estudio de sistemas de información geográfica, el procesamiento de fotogrametría y la estructuración de gemelos digitales para la trazabilidad y la logística agroalimentaria (Supply Chain).</p>
+                    <p style="font-style: italic; font-size: 0.95rem;">*Nota institucional: El trabajo técnico directo con aeronaves pilotadas a distancia (drones) orientadas al área industrial se encuentra actualmente en fase de conversaciones para su reactivación.</p>
+                </div>
+                <div class="img-box">
+                    <!-- FOTO DE DOS COMPAÑEROS COLABORANDO FRENTE A LAS PANTALLAS EN DISEÑO DE CIRCUITOS O PIEZAS -->
+                    <img src="IMG_20260506_120137.jpg" alt="Estudiantes colaborando en desarrollo y diseño digital">
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 5: COMUNIDAD -->
+        <div id="comunidad" class="tab-content">
+            <h2>Una Comunidad Tecnológica Basada en la Colaboración</h2>
+            <p>Aprender tecnologías complejas no requiere un ambiente rígido o competitivo. Nuestro laboratorio promueve activamente un enfoque de trabajo horizontal, paritario y enfocado en la comunidad de aprendizaje.</p>
+
+            <div class="grid-2">
+                <div class="img-box">
+                    <!-- FOTO EN PRIMER PLANO DE LA ALUMNA AJUSTANDO EL ROBOT MOVIL ARDUINO -->
+                    <img src="IMG_20260506_120934.jpg" alt="Estudiante trabajando en prototipo robótico de precisión">
+                </div>
+                <div>
+                    <h3>Soporte entre Pares</h3>
+                    <p>Fomentamos que los estudiantes que logran dominar ciertos lenguajes de programación, lógicas cableadas o configuraciones de mapas, guíen y apoyen a sus propios compañeros. Creemos firmemente que el soporte técnico entre pares consolida el conocimiento y genera un ambiente de taller inclusivo y seguro para equivocarse y aprender.</p>
+                    
+                    <h3>Inclusión y Futuro STEM</h3>
+                    <p>La mención busca derribar mitos de género asociados a las áreas técnicas e industriales. Hombres y mujeres participan activamente en equidad de condiciones en el diseño, la operación de maquinaria pesada y el desarrollo de software.</p>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: 40px;">
+                <div>
+                    <p>Cada prototipo, circuito o línea de empaque simulada requiere miradas multidisciplinarias. Un estudiante puede destacar en la precisión del diseño en 3D, otro en la estructuración de la red y otro en la lógica del PLC; el éxito del proyecto radica en la suma del equipo.</p>
+                </div>
+                <div class="img-box">
+                    <!-- FOTO EN PLANO MEDIO DE LA ALUMNA TRABAJANDO EN EL MISMO PROTOTIPO -->
+                    <img src="IMG_20260506_120917.jpg" alt="Dinámica de taller y desarrollo técnico paritario">
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 6: CONTINUIDAD DE ESTUDIOS -->
+        <div id="continuidad" class="tab-content">
+            <div class="bg-light">
+                <h2>Respaldo Oficial del Ministerio de Educación</h2>
+                <p>Continuar estudios superiores en el área tecnológica e industrial cuenta con un marco legal robusto implementado por el Mineduc para favorecer y acortar la trayectoria académica de los estudiantes de liceos Técnico-Profesionales.</p>
+                
+                <div class="grid-2" style="margin-top: 30px;">
+                    <div class="gov-card">
+                        <h3>📑 Acuerdo Nacional de Articulación</h3>
+                        <p>Los estudiantes que egresan de la especialidad de Elaboración Industrial de Alimentos con un promedio de notas de enseñanza media (NEM) igual o superior a 5.0, y sin módulos reprobados, tienen la opción garantizada de convalidar asignaturas y módulos completos en CFT e IPs acreditados adscritos al convenio a nivel nacional.</p>
+                        <a href="https://www.tecnicoprofesional.mineduc.cl/" target="_blank" class="gov-link">Portal Técnico Profesional Mineduc ↗</a>
+                    </div>
+
+                    <div class="gov-card">
+                        <h3>📈 Bono de Articulación TP</h3>
+                        <p>El Sistema de Acceso a la Educación Superior Técnico-Profesional aplica bonificaciones directas que favorecen la prioridad en las vacantes de ingreso de carreras del área informática, automatización o mecatrónica para titulados de liceos TP.</p>
+                        <a href="https://acceso.mineduc.cl/" target="_blank" class="gov-link">Portal de Acceso de Educación Superior ↗</a>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 35px; background-color: #e2e8f0; border-color: #cbd5e1; color: #1e293b;">
+                    <h3 style="color: #0f172a;">💼 Estado de Alianzas: Convenio INACAP</h3>
+                    <p style="color: #334155;">Actualmente la institución se encuentra trabajando activamente en el diseño pedagógico y desarrollo de un convenio de convalidación bidireccional exclusivo con <strong>INACAP</strong>. Este plan busca conectar de manera directa el egreso de enseñanza media con carreras de Ingeniería en Automatización y Robótica o Ingeniería Informática, potenciando los aprendizajes previos desarrollados en el laboratorio.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PESTAÑA 7: TOUR GUIADO -->
+        <div id="tour" class="tab-content">
+            <h2>Agenda un Recorrido Guiado por Nuestro Laboratorio</h2>
+            <p>La mejor forma de comprender el alcance real de la mención y resolver tus dudas sobre la especialidad es ver el espacio físico en funcionamiento.</p>
+
+            <div class="grid-2">
+                <div>
+                    <h3>Guiado por tus Propios Pares</h3>
+                    <p>Si eres estudiante de segundo medio, el tour será guiado directamente por alumnos que hoy cursan la mención en tercero y cuarto medio. Ellos te mostrarán de manera real cómo operan las maquetas mecatrónicas, dónde se ubican los servidores de red local, los alcances de los dashboards y responderán tus dudas de estudiante a estudiante, sin presiones.</p>
+                    <p>Conversa con ellos sobre el nivel de dificultad, las evaluaciones y cómo se organizan para trabajar en el FabLab.</p>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 20px; text-align: center;">Formulario de Solicitud de Visita</h3>
+                    <form onsubmit="alert('¡Solicitud registrada correctamente! Nos comunicaremos contigo para coordinar el horario del tour.'); return false;">
+                        <div class="form-control">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" required placeholder="Ej: Alejandra González">
+                        </div>
+                        <div class="form-control">
+                            <label for="curso">Curso Actual (2do Medio)</label>
+                            <select id="curso" required>
+                                <option value="">Selecciona tu curso</option>
+                                <option value="2A">2do Medio A</option>
+                                <option value="2B">2do Medio B</option>
+                                <option value="2C">2do Medio C</option>
+                            </select>
+                        </div>
+                        <div class="form-control">
+                            <label for="contacto">Teléfono o WhatsApp de Contacto</label>
+                            <input type="tel" id="contacto" required placeholder="Ej: +56 9 8765 4321">
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">🚀 Solicitar Cupo para el Recorrido</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- MOTOR LOGICO PARA CAMBIO DE PESTAÑAS (TABS INTERNOS) -->
+    <script>
+        function switchTab(tabId, buttonElement) {
+            // Ocultar todos los contenidos de pestaña
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Quitar el estado activo de todos los botones de navegación
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Mostrar la pestaña seleccionada
+            document.getElementById(tabId).classList.add('active');
+
+            // Si el cambio viene desde un botón del menú, marcarlo como activo
+            if (buttonElement) {
+                buttonElement.classList.add('active');
+            } else {
+                // Si viene de un botón interno (ej: Hero), buscar el botón del menú correspondiente
+                const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+                if (targetBtn) targetBtn.classList.add('active');
+            }
             
-            <div class="grid-gov">
-                <div class="gov-card">
-                    <h3>📑 Convenio de Articulación</h3>
-                    <p>Por egresar de Elaboración Industrial de Alimentos con promedio sobre 5.0, tienes el derecho legal de convalidar ramos automáticamente en CFTs e IPs acreditados de todo el país.</p>
-                    <a href="https://www.tecnicoprofesional.mineduc.cl/" target="_blank" class="btn-gov">Ver Portal Técnico Profesional ↗</a>
-                </div>
-
-                <div class="gov-card">
-                    <h3>📈 Bono de Articulación TP</h3>
-                    <p>El Sistema de Acceso del Mineduc te otorga una bonificación exclusiva a tus Notas de Enseñanza Media (NEM) para darte prioridad de matrícula en Ingenierías de alta demanda.</p>
-                    <a href="https://acceso.mineduc.cl/" target="_blank" class="btn-gov">Portal de Acceso Mineduc ↗</a>
-                </div>
-
-                <div class="gov-card">
-                    <h3>🛠️ Reconocimiento RAP</h3>
-                    <p>Tus conocimientos prácticos en programación de PLCs, redes y neumática SMC pueden ser evaluados por instituciones de educación superior para eximirte de asignaturas técnicas avanzadas.</p>
-                    <a href="https://www.chilevalora.cl/" target="_blank" class="btn-gov">Marco de Cualificaciones Chile ↗</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. FORMULARIO DE AGENDAMIENTO (CALL TO ACTION) -->
-    <section id="agendar" class="cta-section">
-        <div class="container">
-            <h2>¿Quieres Ver la Magia en Vivo?</h2>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">No dejes que te lo cuenten. Los actuales estudiantes de la mención te guiarán en un tour exclusivo por el Laboratorio 4.0 para mostrarte las maquetas, servidores y robots funcionando.</p>
-            
-            <div class="form-box">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo</label>
-                        <input type="text" id="nombre" required placeholder="Ej: Juan Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label for="curso">Tu Curso Actual (2do Medio)</label>
-                        <select id="curso" required>
-                            <option value="">Selecciona tu curso</option>
-                            <option value="2A">2do Medio A</option>
-                            <option value="2B">2do Medio B</option>
-                            <option value="2C">2do Medio C</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="whatsapp">WhatsApp / Celular de Contacto</label>
-                        <input type="tel" id="whatsapp" required placeholder="+56 9 1234 5678">
-                    </div>
-                    <button type="submit" class="btn btn-submit">🚀 Reservar Mi Lugar en el Tour</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
+            // Hacer scroll hacia arriba suave al cambiar de pestaña
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
