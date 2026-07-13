@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mención Industria 4.0 - Elaboración Industrial de Alimentos</title>
+    <style>
+        /* VARIABLES DE DISEÑO (Colores Tecnológicos y Modernos) */
+        :root {
+            --primary: #0072ff;
+            --secondary: #00c6ff;
+            --dark-bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --light-bg: #f1f5f9;
+            --success: #10b981;
+        }
+
+        /* ESTILOS GENERALES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-box: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(to right, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 114, 255, 0.6);
+        }
+
+        /* 1. SECCIÓN HERO */
+        .hero {
+            position: relative;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            /* REEMPLAZAR CON TU IMAGEN PRINCIPAL: IMG_20260506_121435.jpg */
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('IMG_20260506_121435.jpg') center/cover no-repeat;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* 2. PILARES 4.0 */
+        .pilares {
+            background-color: #111827;
+        }
+
+        .grid-pilares {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .pilar-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .pilar-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .pilar-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .pilar-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .pilar-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* 3. BLOQUE DE INFRAESTRUCTURA & FABLAB */
+        .fablab-section {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .fablab-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .fablab-image-container {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 114, 255, 0.2);
+        }
+
+        .fablab-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .fablab-image-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: #1e293b;
+            color: var(--secondary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 5px;
+            border: 1px solid #334155;
+        }
+
+        /* 4. COMUNIDAD */
+        .comunidad {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('IMG_20260506_120934.jpg') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .comunidad-box {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .comunidad p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* 5. INSTITUCIONAL & MINEDUC */
+        .institucional {
+            background-color: var(--light-bg);
+            color: #1e293b;
+        }
+
+        .institucional h2 {
+            background: linear-gradient(to right, #1e293b, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid-gov {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .gov-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        .gov-card h3 {
+            margin-bottom: 15px;
+            color: #0f172a;
+        }
+
+        .gov-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-gov {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .btn-gov:hover {
+            border-color: var(--primary);
+        }
+
+        /* 6. FORMULARIO / FOOTER */
+        .cta-section {
+            text-align: center;
+            background-color: #0b0f19;
+        }
+
+        .form-box {
+            max-width: 500px;
+            margin: 40px auto 0 auto;
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--dark-bg);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .btn-submit {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.3rem; }
+            .container { width: 90%; padding: 40px 0; }
+            .fablab-section { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. SECCIÓN HERO (PANTALLA DE INICIO) -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Conecta el territorio.<br><span>Automatiza la industria.</span></h1>
+                <p>Transforma la producción del futuro con la mención en Industria 4.0 de la especialidad de Elaboración Industrial de Alimentos. Pasa del trabajo manual al control inteligente, la robótica y la ciberseguridad.</p>
+                <a href="#agendar" class="btn">🛠️ Reservar Tour en el Laboratorio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. PILARES DE LA MENCIÓN -->
+    <section class="pilares">
+        <div class="container">
+            <h2>Tus Futuros Superpoderes Técnicos</h2>
+            <div class="grid-pilares">
+                
+                <div class="pilar-card">
+                    <div class="pilar-icon">💨</div>
+                    <h3>Fuerza y Mecatrónica</h3>
+                    <p>Diseña y opera sistemas neumáticos industriales avanzados bajo el estándar de <strong>SMC</strong>. Domina la lógica cableada armando tableros de potencia reales.</p>
+                </div>
+
+                <div class="pilar-card">
+                    <div class="pilar-icon">🤖</div>
+                    <h3>Cerebro Digital</h3>
+                    <p>Aprende la programación que controla las empresas globales: desde prototipos con Arduino/Raspberry Pi hasta PLCs de alta gama como <strong>Siemens S7-1200, LOGO! y Finder OPTA</strong>.</p>
+                </div>
+
+                <div class="pilar-card">
+                    <div class="pilar-icon">📊</div>
+                    <h3>Agentes de IA & Redes</h3>
+                    <p>Usa herramientas como Gemini y Antigravity IDE para estructurar dashboards inteligentes y optimizar sistemas. Todo corriendo de forma local en servidores con GPU <strong>NVIDIA RTX 5070</strong>.</p>
+                </div>
+
+                <div class="pilar-card">
+                    <div class="pilar-icon">🔒</div>
+                    <h3>Ciberseguridad IIoT</h3>
+                    <p>Gestiona una red interna real con Switches Gigabit y routers en subredes. Blinda los sistemas automatizados aplicando pautas de <strong>pentesting</strong> exclusivas para tu práctica profesional.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SECCIÓN FABLAB Y DISEÑO -->
+    <section>
+        <div class="container fablab-section">
+            <div class="fablab-text">
+                <h2>Diseño e Innovación FabLab</h2>
+                <p style="color: var(--text-muted); margin-bottom: 20px;">
+                    En nuestro laboratorio no vienes a memorizar pizarras; vienes a modelar componentes mecánicos y conectar el territorio con las líneas de producción a través de tecnologías GIS profesionales.
+                </p>
+                <div>
+                    <span class="tech-tag">AutoCAD</span>
+                    <span class="tech-tag">Fusion 360</span>
+                    <span class="tech-tag">ArcGIS Professional Plus (ESRI)</span>
+                    <span class="tech-tag">Agisoft Metashape</span>
+                    <span class="tech-tag">Drone2Map</span>
+                    <span class="tech-tag">Impresión 3D Bambulab A1 AMS</span>
+                    <span class="tech-tag">Cortadora Láser Falcon 2 Pro</span>
+                </div>
+            </div>
+            <div class="fablab-image-container">
+                <!-- REEMPLAZAR CON TU IMAGEN: IMG_20260506_114223.jpg (Diseño en pantalla) -->
+                <img src="IMG_20260506_114223.jpg" alt="Diseño 3D e Ingeniería en Laboratorio">
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ENFOQUE COMUNITARIO -->
+    <section class="comunidad">
+        <div class="container">
+            <div class="comunidad-box">
+                <h2>Una Comunidad Tecnológica y Paritaria</h2>
+                <p>No programamos ni diseñamos de forma aislada. Somos un equipo donde la colaboración constante entre compañeros y el soporte técnico entre pares es la clave para resolver grandes desafíos de ingeniería aplicada.</p>
+                <!-- REEMPLAZAR CON TU IMAGEN: IMG_20260506_120934.jpg o IMG_20260506_120137.jpg -->
+                <a href="#agendar" class="btn" style="background: transparent; border: 2px solid white; box-shadow: none;">¡Ven a conocernos en equipo!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. RESPALDO DEL MINEDUC (TRANSPARENCIA INSTITUCIONAL) -->
+    <section class="institucional">
+        <div class="container">
+            <h2>Tu Cuarto Medio Vale por Ramos de Universidad</h2>
+            <p style="text-align: center; max-width: 800px; margin: -30px auto 40px auto; color: #475569;">
+                El Ministerio de Educación de Chile respalda tu trayectoria académica técnico-profesional. Conoce las normativas y portales de gobierno que aseguran ventajas reales para tu continuidad de estudios.
+            </p>
+            
+            <div class="grid-gov">
+                <div class="gov-card">
+                    <h3>📑 Convenio de Articulación</h3>
+                    <p>Por egresar de Elaboración Industrial de Alimentos con promedio sobre 5.0, tienes el derecho legal de convalidar ramos automáticamente en CFTs e IPs acreditados de todo el país.</p>
+                    <a href="https://www.tecnicoprofesional.mineduc.cl/" target="_blank" class="btn-gov">Ver Portal Técnico Profesional ↗</a>
+                </div>
+
+                <div class="gov-card">
+                    <h3>📈 Bono de Articulación TP</h3>
+                    <p>El Sistema de Acceso del Mineduc te otorga una bonificación exclusiva a tus Notas de Enseñanza Media (NEM) para darte prioridad de matrícula en Ingenierías de alta demanda.</p>
+                    <a href="https://acceso.mineduc.cl/" target="_blank" class="btn-gov">Portal de Acceso Mineduc ↗</a>
+                </div>
+
+                <div class="gov-card">
+                    <h3>🛠️ Reconocimiento RAP</h3>
+                    <p>Tus conocimientos prácticos en programación de PLCs, redes y neumática SMC pueden ser evaluados por instituciones de educación superior para eximirte de asignaturas técnicas avanzadas.</p>
+                    <a href="https://www.chilevalora.cl/" target="_blank" class="btn-gov">Marco de Cualificaciones Chile ↗</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FORMULARIO DE AGENDAMIENTO (CALL TO ACTION) -->
+    <section id="agendar" class="cta-section">
+        <div class="container">
+            <h2>¿Quieres Ver la Magia en Vivo?</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">No dejes que te lo cuenten. Los actuales estudiantes de la mención te guiarán en un tour exclusivo por el Laboratorio 4.0 para mostrarte las maquetas, servidores y robots funcionando.</p>
+            
+            <div class="form-box">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" required placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label for="curso">Tu Curso Actual (2do Medio)</label>
+                        <select id="curso" required>
+                            <option value="">Selecciona tu curso</option>
+                            <option value="2A">2do Medio A</option>
+                            <option value="2B">2do Medio B</option>
+                            <option value="2C">2do Medio C</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp / Celular de Contacto</label>
+                        <input type="tel" id="whatsapp" required placeholder="+56 9 1234 5678">
+                    </div>
+                    <button type="submit" class="btn btn-submit">🚀 Reservar Mi Lugar en el Tour</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
