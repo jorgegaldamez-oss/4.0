@@ -351,28 +351,39 @@
                 <div class="card">
                     <h3 style="margin-bottom: 20px; text-align: center;">Formulario de Solicitud de Visita</h3>
                     <form action="https://formsubmit.co/jorgegaldamez@liceosannicolas.cl" method="POST">
-                        <div class="form-control">
-                            <label for="nombre">Nombre Completo</label>
-                            <input type="text" id="nombre" required placeholder="Ej: Alejandra González">
-                        </div>
-                        <div class="form-control">
-                            <label for="curso">Curso Actual (2do Medio)</label>
-                            <select id="curso" required>
-                                <option value="">Selecciona tu curso</option>
-                                <option value="2A">2do Medio A</option>
-                                <option value="2B">2do Medio B</option>
-                                <option value="2C">2do Medio C</option>
-                                <option value="2C">2do Medio D</option>
-                                <option value="2C">2do Medio E</option>
-                                <option value="2C">2do Medio F</option>
-                            </select>
-                        </div>
-                        <div class="form-control">
-                            <label for="contacto">Teléfono o WhatsApp de Contacto</label>
-                            <input type="tel" id="contacto" required placeholder="Ej: +56 9 8765 4321">
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">🚀 Solicitar Cupo para el Recorrido</button>
-                    </form>
+    
+    <!-- IMPORTANTE: campo oculto para evitar redirecciones molestas fuera de tu web -->
+    <input type="hidden" name="_next" value="https://https://jorgegaldamez-oss.github.io/4.0/">
+    <input type="hidden" name="_captcha" value="false">
+
+    <div class="form-control">
+        <label for="nombre">Nombre Completo</label>
+        <!-- Agregamos name="nombre" -->
+        <input type="text" id="nombre" name="nombre" required placeholder="Ej: Alejandra González">
+    </div>
+    
+    <div class="form-control">
+        <label for="curso">Tu Curso Actual (2do Medio)</label>
+        <!-- Agregamos name="curso" -->
+        <select id="curso" name="curso" required>
+            <option value="">Selecciona tu curso</option>
+            <option value="2A">2do Medio A</option>
+            <option value="2B">2do Medio B</option>
+            <option value="2C">2do Medio C</option>
+            <option value="2C">2do Medio D</option>
+            <option value="2C">2do Medio E</option>
+            <option value="2C">2do Medio F</option>
+        </select>
+    </div>
+    
+    <div class="form-control">
+        <label for="contacto">Teléfono o WhatsApp de Contacto</label>
+        <!-- Agregamos name="whatsapp" -->
+        <input type="tel" id="contacto" name="whatsapp" required placeholder="Ej: +56 9 8765 4321">
+    </div>
+    
+    <button type="submit" class="btn" style="width: 100%;">🚀 Solicitar Cupo para el Recorrido</button>
+</form>
                 </div>
             </div>
         </div>
