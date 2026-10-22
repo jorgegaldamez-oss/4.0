@@ -8,6 +8,7 @@
         /* SUTILEZAS FUTURISTAS Y PALETA DE COLORES */
         :root {
             --primary: #0284c7;
+            --primary-hover: #0274be;
             --secondary: #38bdf8;
             --dark-bg: #0f172a;
             --card-bg: #1e293b;
@@ -16,22 +17,37 @@
             --light-bg: #f8fafc;
             --gov-blue: #0f4c81;
             --border: #334155;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--dark-bg); color: var(--text-light); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--dark-bg); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
         .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 40px 0; }
         
         /* MENÚ DE NAVEGACIÓN (TABS) */
-        header { background-color: #0b0f19; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; flex-wrap: wrap; }
-        .logo { font-weight: bold; font-size: 1.2rem; color: #fff; text-decoration: none; }
+        header { background-color: #0b0f19; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); backdrop-filter: blur(8px); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { font-weight: bold; font-size: 1.2rem; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .logo span { color: var(--secondary); }
+        .logo-badge { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); border: 1px solid rgba(16, 185, 129, 0.3); font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
         
+        .hamburger { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; padding: 5px; }
+
         nav { display: flex; gap: 5px; flex-wrap: wrap; }
         .tab-btn { background: none; border: none; color: var(--text-muted); padding: 10px 15px; cursor: pointer; font-size: 0.95rem; font-weight: 500; border-radius: 6px; transition: all 0.3s; }
         .tab-btn:hover { color: #fff; background-color: rgba(255,255,255,0.05); }
-        .tab-btn.active { color: #fff; background-color: var(--primary); }
+        .tab-btn.active { color: #fff; background-color: var(--primary); box-shadow: 0 4px 12px rgba(2, 132, 201, 0.3); }
+
+        /* PULSE DOT ANIMATION */
+        .live-dot { width: 8px; height: 8px; background-color: var(--accent-green); border-radius: 50%; display: inline-block; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); animation: pulseDot 1.8s infinite; }
+        @keyframes pulseDot {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
 
         /* PROPAGACIÓN DE CONTENIDOS */
         .tab-content { display: none; }
@@ -43,25 +59,68 @@
         h2 { font-size: 2.2rem; margin-bottom: 25px; color: #fff; border-left: 5px solid var(--primary); padding-left: 15px; }
         p { margin-bottom: 15px; color: var(--text-muted); font-size: 1.05rem; }
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 30px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 25px; }
         
-        .img-box { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .img-box { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 10px 20px rgba(0,0,0,0.2); position: relative; transition: transform 0.3s, border-color 0.3s; }
+        .img-box:hover { border-color: var(--secondary); }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; cursor: pointer; }
+        .img-box:hover img { transform: scale(1.04); }
+        .img-box::after { content: '🔍 Clic para ampliar'; position: absolute; bottom: 10px; right: 10px; background: rgba(15,23,42,0.85); color: #fff; font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; opacity: 0; transition: opacity 0.3s; pointer-events: none; border: 1px solid var(--border); }
+        .img-box:hover::after { opacity: 1; }
 
         .badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
         .badge { background-color: rgba(56, 189, 248, 0.1); color: var(--secondary); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; border: 1px solid rgba(56, 189, 248, 0.2); font-weight: 600; }
 
-        .btn { display: inline-block; background: var(--primary); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: background 0.2s; border: none; cursor: pointer; }
-        .btn:hover { background: #0274be; }
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s; border: none; cursor: pointer; text-align: center; }
+        .btn:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(2, 132, 201, 0.4); }
+        .btn-outline { background: transparent; border: 1px solid var(--secondary); color: var(--secondary); }
+        .btn-outline:hover { background: rgba(56, 189, 248, 0.1); color: #fff; }
 
-        /* PESTAÑA 1: INICIO */
-        .hero { position: relative; padding: 100px 0; background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)), url('IMG_20260506_121435.jpg') center/cover no-repeat; border-radius: 16px; margin-bottom: 40px; }
-        .hero-inner { max-width: 700px; }
+        /* HERO & STAT BANNER */
+        .hero { position: relative; padding: 90px 0; background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)), url('IMG_20260506_121435.jpg') center/cover no-repeat; border-radius: 16px; margin-bottom: 30px; border: 1px solid var(--border); }
+        .hero-inner { max-width: 700px; padding: 0 20px; }
         .hero h1 { font-size: 3rem; color: #fff; line-height: 1.2; margin-bottom: 20px; }
         .hero h1 span { color: var(--secondary); }
 
+        .stat-card { background: rgba(30, 41, 59, 0.8); border: 1px solid var(--border); padding: 20px; border-radius: 12px; text-align: center; backdrop-filter: blur(4px); transition: transform 0.3s; }
+        .stat-card:hover { transform: translateY(-4px); border-color: var(--secondary); }
+        .stat-number { font-size: 2.2rem; font-weight: 800; color: var(--secondary); font-family: monospace; }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
         /* TARJETAS DE ALCANCES */
-        .card { background-color: var(--card-bg); padding: 25px; border-radius: 10px; border: 1px solid var(--border); }
+        .card { background-color: var(--card-bg); padding: 25px; border-radius: 10px; border: 1px solid var(--border); transition: transform 0.3s, border-color 0.3s; }
+        .card:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-3px); }
         .card h3 { color: #fff; margin-bottom: 12px; font-size: 1.3rem; }
+
+        /* DASHBOARD IIOT SIMULATOR EN TIEMPO REAL */
+        .iiot-dashboard { background: #090d16; border: 1px solid #1e293b; border-radius: 12px; padding: 20px; margin-top: 25px; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
+        .iiot-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .iiot-title { font-size: 1.1rem; font-weight: bold; color: var(--secondary); display: flex; align-items: center; gap: 10px; }
+        .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .dash-metric { background: #131c2e; border: 1px solid var(--border); padding: 15px; border-radius: 8px; }
+        .dash-metric-title { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+        .dash-metric-value { font-size: 1.8rem; font-weight: bold; font-family: monospace; color: #fff; margin: 5px 0; }
+        .dash-metric-status { font-size: 0.75rem; color: var(--accent-green); font-weight: 600; }
+
+        .dash-controls { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
+        .dash-btn { background: #1e293b; color: #fff; border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; font-weight: 600; transition: all 0.2s; }
+        .dash-btn:hover { background: var(--primary); border-color: var(--primary); }
+        .dash-btn.active-btn { background: var(--accent-green); color: #000; border-color: var(--accent-green); }
+
+        .terminal-log { background: #030712; font-family: 'Courier New', Courier, monospace; font-size: 0.8rem; padding: 12px; border-radius: 6px; border: 1px solid #1f2937; color: #38bdf8; max-height: 120px; overflow-y: auto; line-height: 1.4; }
+        .log-entry { margin-bottom: 4px; }
+        .log-time { color: var(--text-muted); }
+        .log-tag { color: var(--accent-amber); font-weight: bold; }
+
+        /* QUIZ INTERACTIVO "PERFIL 4.0" */
+        .quiz-card { background: linear-gradient(145deg, #1e293b, #0f172a); border: 1px solid var(--border); border-radius: 12px; padding: 30px; margin-top: 35px; }
+        .quiz-question { font-size: 1.2rem; color: #fff; font-weight: 600; margin-bottom: 20px; }
+        .quiz-options { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 25px; }
+        .quiz-option { background: #182234; border: 1px solid var(--border); padding: 15px 20px; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 0.95rem; color: var(--text-light); display: flex; align-items: center; gap: 12px; }
+        .quiz-option:hover { border-color: var(--secondary); background: #1e2d42; }
+        .quiz-option.selected { border-color: var(--primary); background: rgba(2, 132, 201, 0.2); font-weight: 600; }
+        .quiz-result { display: none; background: #0f172a; border: 2px solid var(--secondary); padding: 25px; border-radius: 10px; text-align: center; animation: fadeIn 0.4s; }
+        .quiz-result h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 10px; }
 
         /* PESTAÑA INSTITUCIONAL (MINEDUC) */
         .bg-light { background-color: var(--light-bg); color: #1e293b; border-radius: 16px; padding: 40px; }
@@ -78,11 +137,23 @@
         .form-control input, .form-control select { width: 100%; padding: 12px; background-color: var(--dark-bg); border: 1px solid var(--border); border-radius: 6px; color: white; font-size: 1rem; }
         .form-control input:focus, .form-control select:focus { outline: none; border-color: var(--primary); }
 
+        /* MODAL LIGHTBOX & MODAL CONFIRMACION */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-overlay.active { display: flex; animation: fadeIn 0.3s; }
+        .modal-body { background: var(--card-bg); border: 1px solid var(--border); max-width: 900px; width: 100%; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .modal-img { width: 100%; max-height: 80vh; object-fit: contain; display: block; background: #000; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.7); color: #fff; border: none; font-size: 1.5rem; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10; transition: background 0.2s; }
+        .modal-close:hover { background: var(--accent-red); }
+
         /* RESPONSIVO */
         @media(max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 15px; text-align: center; }
+            .hamburger { display: block; }
+            nav { display: none; width: 100%; flex-direction: column; gap: 8px; margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px; }
+            nav.open { display: flex; }
+            .tab-btn { width: 100%; text-align: left; padding: 12px 15px; }
             .hero h1 { font-size: 2rem; }
             .grid-2 { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: 1fr 1fr; }
             h2 { font-size: 1.7rem; }
         }
     </style>
@@ -91,8 +162,12 @@
 
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo" onclick="switchTab('inicio')">Especialidad <span>Industria 4.0</span></a>
-            <nav>
+            <a href="#" class="logo" onclick="switchTab('inicio')">
+                Especialidad <span>Industria 4.0</span>
+                <span class="logo-badge"><span class="live-dot"></span> EN LÍNEA</span>
+            </a>
+            <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú">☰</button>
+            <nav id="nav-menu">
                 <button class="tab-btn active" onclick="switchTab('inicio', this)">Inicio</button>
                 <button class="tab-btn" onclick="switchTab('automatizacion', this)">Automatización e Ingeniería</button>
                 <button class="tab-btn" onclick="switchTab('it', this)">Infraestructura IT e IA</button>
@@ -109,17 +184,38 @@
         <!-- PESTAÑA 1: INICIO -->
         <div id="inicio" class="tab-content active">
             <div class="hero">
-                <div class="container">
-                    <div class="hero-inner">
-                        <h1>Conecta el territorio.<br><span>Automatiza la industria.</span></h1>
-                        <p>Una aproximación tecnológica de vanguardia dentro de la especialidad de Elaboración Industrial de Alimentos. Conoce un espacio de aprendizaje diseñado para explorar las competencias del mañana.</p>
+                <div class="hero-inner">
+                    <h1>Conecta el territorio.<br><span>Automatiza la industria.</span></h1>
+                    <p>Una aproximación tecnológica de vanguardia dentro de la especialidad de Elaboración Industrial de Alimentos. Conoce un espacio de aprendizaje diseñado para explorar las competencias del mañana.</p>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
                         <button class="btn" onclick="switchTab('tour')">🗓️ Agendar una Visita al Laboratorio</button>
+                        <button class="btn btn-outline" onclick="scrollToQuiz()">🧩 Hacer Test de Perfil 4.0</button>
                     </div>
                 </div>
             </div>
 
+            <!-- CONTADORES DINÁMICOS DE IMPACTO -->
+            <div class="grid-4" style="margin-bottom: 40px;">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="1">0</div>
+                    <div class="stat-label">Célula Payelec Integrada</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-label">Subredes Gigabit IIoT</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="40">0</div>
+                    <div class="stat-label">Watts Corte Láser FabLab</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">% Enfoque Práctico</div>
+                </div>
+            </div>
+
             <h2>Una Mención en Constante Evolución</h2>
-            <p>La transformación digital avanza rápido y nuestro entorno educativo cambia con ella. Esta mención ofrece a los estudiantes de segundo medio una plataforma de exploration tecnológica que vincula la ingeniería de procesos, la conectividad y la gestión del territorio. No se trata de memorizar rutinas automáticas, sino de entender cómo interactúa el hardware, el software y los datos en los ecosistemas productivos modernos.</p>
+            <p>La transformación digital avanza rápido y nuestro entorno educativo cambia con ella. Esta mención ofrece a los estudiantes de segundo medio una plataforma de exploración tecnológica que vincula la ingeniería de procesos, la conectividad y la gestión del territorio. No se trata de memorizar rutinas automáticas, sino de entender cómo interactúa el hardware, el software y los datos en los ecosistemas productivos modernos.</p>
             
             <div class="grid-2">
                 <div class="card">
@@ -129,6 +225,30 @@
                 <div class="card">
                     <h3>🌐 Un Flujo de Trabajo Integrado</h3>
                     <p>Desde comprender cómo se diseña un plano o se analiza un mapa, hasta explorar la lógica detrás del control de un motor o el aseguramiento de un canal de datos. Todo el espacio está conectado.</p>
+                </div>
+            </div>
+
+            <!-- MINI-QUIZ INTERACTIVO PERFIL 4.0 -->
+            <div id="quiz-section" class="quiz-card">
+                <h2 style="border-left: none; padding-left: 0; margin-bottom: 10px; font-size: 1.8rem;">🧩 Descubre tu Perfil en Industria 4.0</h2>
+                <p style="margin-bottom: 25px;">Responde estas 3 breves preguntas para saber en qué área del laboratorio potenciarás mejor tus habilidades:</p>
+
+                <div id="quiz-container">
+                    <div class="quiz-question" id="quiz-q-title">Pregunta 1 de 3</div>
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- Generado por JS -->
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span id="quiz-step-indicator" style="font-size: 0.85rem; color: var(--text-muted);">Paso 1 / 3</span>
+                        <button class="btn" id="quiz-next-btn" onclick="nextQuizQuestion()" disabled>Siguiente Pregunta ➔</button>
+                    </div>
+                </div>
+
+                <div id="quiz-result" class="quiz-result">
+                    <div style="font-size: 3rem; margin-bottom: 10px;" id="quiz-icon">🚀</div>
+                    <h3 id="quiz-role-title">Tu Perfil Ideal: Specialist</h3>
+                    <p id="quiz-role-desc" style="max-width: 600px; margin: 0 auto 20px auto;"></p>
+                    <button class="btn" onclick="resetQuiz()">🔄 Repetir Test</button>
                 </div>
             </div>
         </div>
@@ -165,8 +285,56 @@
                             <span class="badge" style="background: #0f172a;">Células de Carga</span>
                         </div>
                     </div>
-                    <div class="img-box" style="border: 2px solid var(--primary); max-height: 500px;">
-                        <img src="plantamecatronica.jpeg" alt="Sistema de Entrenamiento de Automatización de Fábrica Payelec">
+                    <div>
+                        <div class="img-box" style="border: 2px solid var(--primary); max-height: 420px;">
+                            <img src="plantamecatronica.jpeg" alt="Sistema de Entrenamiento de Automatización de Fábrica Payelec" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SIMULADOR INTERACTIVO DE TELEMETRÍA IIOT -->
+                <div class="iiot-dashboard">
+                    <div class="iiot-header">
+                        <div class="iiot-title">
+                            <span class="live-dot"></span>
+                            Simulador IIoT en Tiempo Real - Célula Payelec
+                        </div>
+                        <span style="font-size: 0.8rem; background: rgba(56, 189, 248, 0.15); color: var(--secondary); padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.3);">
+                            PLC Status: ONLINE
+                        </span>
+                    </div>
+
+                    <div class="dash-grid">
+                        <div class="dash-metric">
+                            <div class="dash-metric-title">Velocidad Cinta</div>
+                            <div class="dash-metric-value" id="dash-speed">24 RPM</div>
+                            <div class="dash-metric-status" id="dash-speed-status">● Operación Normal</div>
+                        </div>
+                        <div class="dash-metric">
+                            <div class="dash-metric-title">Piezas Procesadas</div>
+                            <div class="dash-metric-value" id="dash-count">142</div>
+                            <div class="dash-metric-status">● RFID Sync Active</div>
+                        </div>
+                        <div class="dash-metric">
+                            <div class="dash-metric-title">Temperatura Motor</div>
+                            <div class="dash-metric-value" id="dash-temp">38.5 °C</div>
+                            <div class="dash-metric-status" id="dash-temp-status">● Estable</div>
+                        </div>
+                        <div class="dash-metric">
+                            <div class="dash-metric-title">Brazo Robótico</div>
+                            <div class="dash-metric-value" id="dash-cobot">READY</div>
+                            <div class="dash-metric-status">● Paletizado OK</div>
+                        </div>
+                    </div>
+
+                    <div class="dash-controls">
+                        <button class="dash-btn active-btn" id="btn-toggle-plant" onclick="togglePlantSimulation()">⏸️ Pausar Planta</button>
+                        <button class="dash-btn" onclick="triggerRfidScan()">🏷️ Simular Lectura RFID</button>
+                        <button class="dash-btn" onclick="triggerQualityReject()" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">⚠️ Simular Falla & Descarte</button>
+                    </div>
+
+                    <div class="terminal-log" id="terminal-log">
+                        <div class="log-entry"><span class="log-time">[00:00:01]</span> <span class="log-tag">[SYSTEM]</span> Telemetría IIoT iniciada correctamente. Conectado a PLC Modbus TCP/IP.</div>
                     </div>
                 </div>
             </div>
@@ -175,7 +343,7 @@
             <div class="grid-2">
                 <div>
                     <h3>Sistemas de Electrocontrol y Potencia</h3>
-                    <p>El laboratorio dispone de estaciones equipadas para el estudio y montaje de lógicas de control eléctrico bajo normativas vigentes. Los estudiantes tienen la oportunidad de interactuar directamente con elementos de protección y maniobra industrial como contactores, disyuntores, relés térmicos, differentials y botoneras de control, utilizando multímetros para el diagnóstico seguro de circuitos.</p>
+                    <p>El laboratorio dispone de estaciones equipadas para el estudio y montaje de lógicas de control eléctrico bajo normativas vigentes. Los estudiantes tienen la oportunidad de interactuar directamente con elementos de protección y maniobra industrial como contactores, disyuntores, relés térmicos, diferenciales y botoneras de control, utilizando multímetros para el diagnóstico seguro de circuitos.</p>
                     
                     <div class="badge-container">
                         <span class="badge">Lógica Cableada</span>
@@ -184,13 +352,13 @@
                     </div>
                 </div>
                 <div class="img-box">
-                    <img src="IMG_20260506_114152.jpg" alt="Estudiante analizando paneles de control eléctrico">
+                    <img src="IMG_20260506_114152.jpg" alt="Estudiante analizando paneles de control eléctrico" onclick="openLightbox(this.src)">
                 </div>
             </div>
 
             <div class="grid-2" style="margin-top: 50px;">
                 <div class="img-box">
-                    <img src="IMG_20260506_120511.jpg" alt="Trabajo en equipo sobre banco de neumática SMC">
+                    <img src="IMG_20260506_120511.jpg" alt="Trabajo en equipo sobre banco de neumática SMC" onclick="openLightbox(this.src)">
                 </div>
                 <div>
                     <h3>Mecatrónica y Fluidos Industriales (SMC)</h3>
@@ -204,7 +372,7 @@
                     <p>Dependiendo de los objetivos pedagógicos planificados para el periodo académico, las estaciones secundarias de automatización permiten revisar desde fundamentos electrónicos con placas de desarrollo (Arduino / Raspberry Pi), hasta plataformas de control industrial como el ecosistema <strong>Siemens LOGO! y S7-1200</strong>, integrando además las nuevas alternativas de conectividad que ofrece el controlador <strong>Finder OPTA</strong>.</p>
                 </div>
                 <div class="img-box">
-                    <img src="IMG_20260506_114223.jpg" alt="Maquetas mecatrónicas y módulos de control industrial">
+                    <img src="IMG_20260506_114223.jpg" alt="Maquetas mecatrónicas y módulos de control industrial" onclick="openLightbox(this.src)">
                 </div>
             </div>
         </div>
@@ -223,7 +391,7 @@
                     <p>Para la administración de sistemas e infraestructura, el taller incorpora servidores de torre dedicados operando sobre plataformas <strong>Ubuntu Server</strong> de forma nativa. Esto permite simular el despliegue de soluciones e-commerce y aplicaciones locales que interactúan con la planta.</p>
                 </div>
                 <div class="img-box">
-                    <img src="IMG_20260506_115310.jpg" alt="Estudiante analizando sistemas e infraestructura informática">
+                    <img src="IMG_20260506_115310.jpg" alt="Estudiante analizando sistemas e infraestructura informática" onclick="openLightbox(this.src)">
                 </div>
             </div>
 
@@ -254,7 +422,7 @@
                     <p style="font-style: italic; font-size: 0.95rem;">*Nota institucional: El trabajo técnico directo con aeronaves pilotadas a distancia (drones) orientadas al área industrial se encuentra actualmente en fase de conversaciones para su reactivación.</p>
                 </div>
                 <div class="img-box">
-                    <img src="IMG_20260506_120137.jpg" alt="Estudiantes colaborando en desarrollo y diseño digital">
+                    <img src="IMG_20260506_120137.jpg" alt="Estudiantes colaborando en desarrollo y diseño digital" onclick="openLightbox(this.src)">
                 </div>
             </div>
         </div>
@@ -266,7 +434,7 @@
 
             <div class="grid-2">
                 <div class="img-box">
-                    <img src="IMG_20260506_120934.jpg" alt="Estudiante trabajando en prototipo robótico de precisión">
+                    <img src="IMG_20260506_120934.jpg" alt="Estudiante trabajando en prototipo robótico de precisión" onclick="openLightbox(this.src)">
                 </div>
                 <div>
                     <h3>Soporte entre Pares</h3>
@@ -282,7 +450,7 @@
                     <p>Cada prototipo, circuito o línea de empaque simulada requiere miradas multidisciplinarias. Un estudiante puede destacar en la precisión del diseño en 3D, otro en la estructuración de la red y otro en la lógica del PLC; el éxito del proyecto radica en la suma del equipo.</p>
                 </div>
                 <div class="img-box">
-                    <img src="equipo.jpeg" alt="Dinámica de taller y desarrollo técnico paritario">
+                    <img src="equipo.jpeg" alt="Dinámica de taller y desarrollo técnico paritario" onclick="openLightbox(this.src)">
                 </div>
             </div>
         </div>
@@ -310,14 +478,14 @@
                 </div>
 
                 <div class="grid-2" style="margin-top: 30px;">
-                    <!-- NUEVA TARJETA 3: CUPO EXPLORA UNESCO -->
+                    <!-- TARJETA 3: CUPO EXPLORA UNESCO -->
                     <div class="gov-card" style="border-top-color: #7c3aed;">
                         <h3>🧬 Cupo Explora-UNESCO</h3>
                         <p>Si durante tu paso por la mención participas activamente en el desarrollo de proyectos de innovación, investigación o tecnología vinculados a <strong>PAR Explora</strong>, tienes la posibilidad de postular al Cupo Explora-UNESCO. Esta vía otorga acceso directo e independiente del puntaje PAES a carreras universitarias científicas y tecnológicas.</p>
                         <a href="https://www.explora.cl/" target="_blank" class="gov-link" style="color: #7c3aed;">Conoce el Programa PAR Explora ↗</a>
                     </div>
 
-                    <!-- NUEVA TARJETA 4: ADMISIÓN ESPECIAL STEM -->
+                    <!-- TARJETA 4: ADMISIÓN ESPECIAL STEM -->
                     <div class="gov-card" style="border-top-color: #db2777;">
                         <h3>👩‍💻 Admisión Especial STEM y Mujeres en Ciencia</h3>
                         <p>El desarrollo de habilidades tecnológicas y mecatrónicas en el taller abre la oportunidad de postular a vías de admisión especial en las universidades chilenas (como el cupo "Más Mujeres Científicas" del Mineduc o vacantes por "Talento Tecnológico"), reconociendo tus logros en robótica, programación o diseño FabLab.</p>
@@ -328,9 +496,9 @@
                 <!-- SECCIÓN ALIANZA INACAP -->
                 <div class="card" style="margin-top: 35px; background-color: #e2e8f0; border-color: #cbd5e1; color: #1e293b;">
                     <h3 style="color: #0f172a;">💼 Estado de Alianzas: Convenio INACAP</h3>
-                    <p style="color: #334155;">Actualmente la institution se encuentra trabajando activamente en el diseño pedagógico y desarrollo de un convenio de convalidación bidireccional exclusivo con <strong>INACAP</strong>. Este plan busca conectar de manera directa el egreso de enseñanza media con carreras de Ingeniería en Automatización y Robótica o Ingeniería Informática, potenciando los aprendizajes previos desarrollados en el laboratorio.</p>
+                    <p style="color: #334155;">Actualmente la institución se encuentra trabajando activamente en el diseño pedagógico y desarrollo de un convenio de convalidación bidireccional exclusivo con <strong>INACAP</strong>. Este plan busca conectar de manera directa el egreso de enseñanza media con carreras de Ingeniería en Automatización y Robótica o Ingeniería Informática, potenciando los aprendizajes previos desarrollados en el laboratorio.</p>
                 </div>
-            </div> <!-- <--- AQUÍ ESTABA EL ERROR: ESTA ETIQUETA HABÍA SIDO ELIMINADA -->
+            </div>
         </div>
 
         <!-- PESTAÑA 7: TOUR GUIADO -->
@@ -347,9 +515,8 @@
                 
                 <div class="card">
                     <h3 style="margin-bottom: 20px; text-align: center;">Formulario de Solicitud de Visita</h3>
-                    <form action="https://formsubmit.co/jorgegaldamez@liceosannicolas.cl" method="POST">
-    
-                        <!-- IMPORTANTE: campos ocultos para redirección limpia y sin captcha -->
+                    <form id="tour-form" action="https://formsubmit.co/jorgegaldamez@liceosannicolas.cl" method="POST" onsubmit="handleTourSubmit(event)">
+                        <!-- Campos ocultos para FormSubmit -->
                         <input type="hidden" name="_next" value="https://jorgegaldamez-oss.github.io/4.0/">
                         <input type="hidden" name="_captcha" value="false">
 
@@ -365,9 +532,9 @@
                                 <option value="2A">2do Medio A</option>
                                 <option value="2B">2do Medio B</option>
                                 <option value="2C">2do Medio C</option>
-                                <option value="2D">2do Medio D</option> <!-- Corregido value de 2C a 2D -->
-                                <option value="2E">2do Medio E</option> <!-- Corregido value de 2C a 2E -->
-                                <option value="2F">2do Medio F</option> <!-- Corregido value de 2C a 2F -->
+                                <option value="2D">2do Medio D</option>
+                                <option value="2E">2do Medio E</option>
+                                <option value="2F">2do Medio F</option>
                             </select>
                         </div>
                         
@@ -384,31 +551,331 @@
 
     </main>
 
-    <!-- MOTOR LOGICO PARA CAMBIO DE PESTAÑAS (TABS INTERNOS) -->
+    <!-- LIGHTBOX MODAL PARA VER IMÁGENES -->
+    <div id="lightbox-modal" class="modal-overlay" onclick="closeLightbox(event)">
+        <div class="modal-body" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-img" class="modal-img" src="" alt="Vista ampliada">
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMACIÓN FORMULARIO TOUR -->
+    <div id="confirm-modal" class="modal-overlay">
+        <div class="modal-body" style="padding: 30px; text-align: center; max-width: 500px;">
+            <div style="font-size: 3rem; margin-bottom: 15px;">🎉</div>
+            <h3 style="color: var(--secondary); font-size: 1.6rem; margin-bottom: 12px;">¡Solicitud Registrada!</h3>
+            <p style="color: var(--text-muted); margin-bottom: 25px;" id="confirm-modal-msg">
+                Gracias por agendar tu visita. Tus compañeros guías de la mención se contactarán pronto para coordinar el horario de tu recorrido por el laboratorio.
+            </p>
+            <button class="btn" onclick="closeConfirmModal()">¡Excelente!</button>
+        </div>
+    </div>
+
+    <!-- MOTOR LÓGICO Y DINÁMICO DE LA PÁGINA -->
     <script>
+        // 1. MOTOR DE PESTAÑA (TABS INTERNOS)
         function switchTab(tabId, buttonElement) {
-            // Ocultar todos los contenidos de pestaña
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Quitar el estado activo de todos los botones de navegación
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Mostrar la pestaña seleccionada
             document.getElementById(tabId).classList.add('active');
 
-            // Si el cambio viene desde un botón del menú, marcarlo como activo
             if (buttonElement) {
                 buttonElement.classList.add('active');
             } else {
-                // Si viene de un botón interno (ej: Hero), buscar el botón del menú correspondiente
-                const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick').includes(tabId));
+                const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId));
                 if (targetBtn) targetBtn.classList.add('active');
             }
             
-            // Hacer scroll hacia arriba suave al cambiar de pestaña
+            // Cerrar menú móvil si está abierto
+            document.getElementById('nav-menu').classList.remove('open');
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Animar contadores al cambiar a Inicio
+            if (tabId === 'inicio') {
+                animateCounters();
+            }
+        }
+
+        // 2. MENÚ HAMBURGUESA MÓVIL
+        document.getElementById('hamburger-btn').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('open');
+        });
+
+        // 3. LIGHTBOX PARA AMPLIACIÓN DE IMÁGENES
+        function openLightbox(src) {
+            const modal = document.getElementById('lightbox-modal');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            modal.classList.add('active');
+        }
+
+        function closeLightbox(e) {
+            const modal = document.getElementById('lightbox-modal');
+            modal.classList.remove('active');
+        }
+
+        // 4. CONTADORES ANIMADOS DE ESTADÍSTICAS
+        let countersAnimated = false;
+        function animateCounters() {
+            if (countersAnimated) return;
+            countersAnimated = true;
+
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                let count = 0;
+                const increment = Math.ceil(target / 40);
+                const timer = setInterval(() => {
+                    count += increment;
+                    if (count >= target) {
+                        counter.innerText = target + (target === 100 ? '%' : (target === 40 ? 'W' : ''));
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = count + (target === 100 ? '%' : (target === 40 ? 'W' : ''));
+                    }
+                }, 30);
+            });
+        }
+        // Iniciar al cargar página
+        window.addEventListener('DOMContentLoaded', animateCounters);
+
+        // 5. SIMULADOR DE TELEMETRÍA IIOT EN TIEMPO REAL
+        let isPlantRunning = true;
+        let pieceCount = 142;
+        let plantInterval = null;
+
+        function startPlantSimulator() {
+            if (plantInterval) clearInterval(plantInterval);
+            plantInterval = setInterval(() => {
+                if (!isPlantRunning) return;
+
+                // Variar velocidad ligeramente
+                const speed = Math.floor(22 + Math.random() * 5);
+                document.getElementById('dash-speed').innerText = speed + ' RPM';
+
+                // Variar temperatura progresivamente
+                const temp = (37.5 + Math.random() * 2.5).toFixed(1);
+                document.getElementById('dash-temp').innerText = temp + ' °C';
+
+                // Incrementar contador de piezas ocasionalmente
+                if (Math.random() > 0.6) {
+                    pieceCount++;
+                    document.getElementById('dash-count').innerText = pieceCount;
+                    addLogEntry('PALLET', `Pieza #${pieceCount} paletizada por Cobot. Tag RFID grabado OK.`);
+                }
+            }, 2500);
+        }
+
+        function togglePlantSimulation() {
+            isPlantRunning = !isPlantRunning;
+            const btn = document.getElementById('btn-toggle-plant');
+            const speedStatus = document.getElementById('dash-speed-status');
+
+            if (isPlantRunning) {
+                btn.innerText = '⏸️ Pausar Planta';
+                btn.classList.add('active-btn');
+                speedStatus.innerText = '● Operación Normal';
+                speedStatus.style.color = 'var(--accent-green)';
+                addLogEntry('SYSTEM', 'Línea de producción reanudada.');
+            } else {
+                btn.innerText = '▶️ Reanudar Planta';
+                btn.classList.remove('active-btn');
+                speedStatus.innerText = '⏸️ Detenida';
+                speedStatus.style.color = 'var(--accent-amber)';
+                addLogEntry('SYSTEM', 'Línea de producción pausada por usuario.');
+            }
+        }
+
+        function triggerRfidScan() {
+            const randomTag = 'RF-' + Math.floor(100000 + Math.random() * 900000);
+            const cobotStatus = document.getElementById('dash-cobot');
+            cobotStatus.innerText = 'SCANNING';
+            cobotStatus.style.color = 'var(--secondary)';
+
+            addLogEntry('RFID', `Lectura en antena UHF: Tag [${randomTag}] - Lote verificado.`);
+
+            setTimeout(() => {
+                cobotStatus.innerText = 'READY';
+                cobotStatus.style.color = '#fff';
+            }, 1200);
+        }
+
+        function triggerQualityReject() {
+            const tempStatus = document.getElementById('dash-temp-status');
+            tempStatus.innerText = '⚠️ Alerta Calidad';
+            tempStatus.style.color = 'var(--accent-red)';
+
+            addLogEntry('REJECT', 'Censo de carga detecta desviación de peso. Activando actuador de descarte.');
+
+            setTimeout(() => {
+                tempStatus.innerText = '● Estable';
+                tempStatus.style.color = 'var(--accent-green)';
+            }, 3000);
+        }
+
+        function addLogEntry(tag, text) {
+            const logContainer = document.getElementById('terminal-log');
+            if (!logContainer) return;
+
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0];
+
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `<span class="log-time">[${timeStr}]</span> <span class="log-tag">[${tag}]</span> ${text}`;
+
+            logContainer.appendChild(entry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        startPlantSimulator();
+
+        // 6. MINI-QUIZ INTERACTIVO PERFIL 4.0
+        const quizQuestions = [
+            {
+                question: "¿Qué tipo de actividades o proyectos llaman más tu atención?",
+                options: [
+                    { text: "🤖 Armar mecanismos, motores y programar brazos robóticos", role: "robotica" },
+                    { text: "💻 Configurar servidores, redes de internet y modelos de IA", role: "it" },
+                    { text: "🎨 Diseñar piezas en 3D y cortarlas en láser en el FabLab", role: "fablab" },
+                    { text: "🗺️ Analizar mapas interactivos y monitorear el territorio con drones", role: "gis" }
+                ]
+            },
+            {
+                question: "¿Cómo te imaginas resolviendo un problema técnico?",
+                options: [
+                    { text: "⚡ Diagnosticando tableros de control y sensores de planta", role: "robotica" },
+                    { text: "🛡️ Protegiendo redes de datos contra ciberataques y administrando Ubuntu", role: "it" },
+                    { text: "📐 Modelando en CAD y prototipando rápido en impresoras 3D", role: "fablab" },
+                    { text: "🛰️ Conectando datos de la cadena agroalimentaria con mapas GIS", role: "gis" }
+                ]
+            },
+            {
+                question: "¿Cuál de estos campos profesionales te atrae más a futuro?",
+                options: [
+                    { text: "🚀 Ingeniería en Automatización, Mecatrónica o Robótica Industrial", role: "robotica" },
+                    { text: "🌐 Ingeniería Informática, Ciberseguridad o Ciencia de Datos", role: "it" },
+                    { text: "⚙️ Diseño Industrial, Manufactura Digital o Prototipado FabLab", role: "fablab" },
+                    { text: "🌍 Geointeligencia, Logística de Alimentos o Ingeniería Agrícola", role: "gis" }
+                ]
+            }
+        ];
+
+        const profiles = {
+            robotica: {
+                title: "🤖 Especialista en Automatización & Robótica",
+                desc: "Tienes una fuerte inclinación hacia la ingeniería física, los controladores programables (PLC), los sensores y la mecatrónica. En el laboratorio te destacará operar la célula Payelec, programar el Cobot y armar tableros de electrocontrol.",
+                icon: "🤖"
+            },
+            it: {
+                title: "💻 Arquitecto/a de Redes e Infraestructura IT",
+                desc: "Tu fuerte es la mente digital, las conexiones de red, el software y los modelos de IA local. En la mención dominarás la administración de Ubuntu Server, la segmentación de subredes Gigabit y la ciberseguridad industrial.",
+                icon: "💻"
+            },
+            fablab: {
+                title: "📐 Diseñador/a de Manufactura Digital FabLab",
+                desc: "Tu creatividad y visión espacial son claves para la innovación. Te fascinará dominar AutoCAD, Fusion 360, la cortadora láser Falcon 2 Pro y el ecosistema de impresión 3D multicolor Bambulab AMS.",
+                icon: "⚙️"
+            },
+            gis: {
+                title: "🌍 Analista de Geointeligencia & Territorio",
+                desc: "Te apasiona la escala global y la trazabilidad de los recursos. Aprovecharás al máximo las licencias profesionales de ArcGIS de ESRI Chile, el procesamiento de fotogrametría y la logística territorial agroalimentaria.",
+                icon: "🌍"
+            }
+        };
+
+        let currentQuizIndex = 0;
+        let quizAnswers = [];
+        let selectedOptionRole = null;
+
+        function renderQuizQuestion() {
+            const q = quizQuestions[currentQuizIndex];
+            document.getElementById('quiz-q-title').innerText = `Pregunta ${currentQuizIndex + 1} de ${quizQuestions.length}: ${q.question}`;
+            document.getElementById('quiz-step-indicator').innerText = `Paso ${currentQuizIndex + 1} / ${quizQuestions.length}`;
+
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+
+            selectedOptionRole = null;
+            document.getElementById('quiz-next-btn').disabled = true;
+
+            q.options.forEach((opt, idx) => {
+                const optEl = document.createElement('div');
+                optEl.className = 'quiz-option';
+                optEl.innerText = opt.text;
+                optEl.onclick = () => {
+                    document.querySelectorAll('.quiz-option').forEach(el => el.classList.remove('selected'));
+                    optEl.classList.add('selected');
+                    selectedOptionRole = opt.role;
+                    document.getElementById('quiz-next-btn').disabled = false;
+                };
+                optionsContainer.appendChild(optEl);
+            });
+        }
+
+        function nextQuizQuestion() {
+            if (!selectedOptionRole) return;
+            quizAnswers.push(selectedOptionRole);
+
+            currentQuizIndex++;
+            if (currentQuizIndex < quizQuestions.length) {
+                renderQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quiz-container').style.display = 'none';
+
+            // Calcular rol más seleccionado
+            const counts = {};
+            quizAnswers.forEach(role => counts[role] = (counts[role] || 0) + 1);
+            let topRole = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b);
+
+            const result = profiles[topRole];
+            document.getElementById('quiz-icon').innerText = result.icon;
+            document.getElementById('quiz-role-title').innerText = result.title;
+            document.getElementById('quiz-role-desc').innerText = result.desc;
+
+            document.getElementById('quiz-result').style.display = 'block';
+        }
+
+        function resetQuiz() {
+            currentQuizIndex = 0;
+            quizAnswers = [];
+            document.getElementById('quiz-result').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            renderQuizQuestion();
+        }
+
+        function scrollToQuiz() {
+            const quizEl = document.getElementById('quiz-section');
+            if (quizEl) {
+                quizEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Inicializar quiz
+        renderQuizQuestion();
+
+        // 7. ENVÍO DE FORMULARIO DE TOUR & MODAL
+        function handleTourSubmit(event) {
+            // Nota: Para mantener el funcionamiento de FormSubmit sin romper su POST pero entregando feedback dinámico:
+            // mostramos modal y permitimos la acción.
+            const nombre = document.getElementById('nombre').value;
+            const curso = document.getElementById('curso').value;
+            document.getElementById('confirm-modal-msg').innerText = `¡Hola ${nombre} (${curso})! Tu solicitud de recorrido por la Mención Industria 4.0 ha sido agendada con éxito. Un estudiante guía se pondrá en contacto pronto contigo.`;
+            document.getElementById('confirm-modal').classList.add('active');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirm-modal').classList.remove('active');
         }
     </script>
 </body>
